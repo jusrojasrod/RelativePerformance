@@ -8,7 +8,7 @@ def _sma(data, period=50):
     data: pandas dataframe
         Dataframe populated with prices.
     period: int
-        Lookback period to compute the SMA.
+        Lookback period to compute the SMA. 50 by default.
     """
     SMA = data.rolling(window=period).mean()
 
