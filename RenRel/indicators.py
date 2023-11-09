@@ -27,3 +27,17 @@ def _std(data, period=50):
     std = data.rolling(window=period)
 
     return std
+
+
+def _PM(prices_df, sma_df):
+    """
+    Parameters
+    ----------
+    prices_df: pandas dataframe
+        Dataframe containing prices.
+    sma_df: pandas dataframe
+     Dataframe containing sma data.
+    """
+    PM = (prices_df - sma_df) / sma_df
+
+    return PM
