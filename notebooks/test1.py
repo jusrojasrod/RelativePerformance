@@ -1,1 +1,1 @@
-from ..relper import indicators
+from relper.indicators import _bollinger_bands
