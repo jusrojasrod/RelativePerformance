@@ -69,3 +69,31 @@ def _bollinger_bands(data, periods=14, n=1.5,
                               'Lower Band': downBand
                               }
                         )
+
+def _rsi(data, periods=14):
+    """
+    Relative Strength Index
+
+    Paramenters
+    -----------
+    data: pandas DataFrame
+        Close prices.
+    periods: int
+        Number of candles to lookback.
+    Returns
+    -------
+    rsi: series
+        rsi values in series format
+    """
+    change = data.diff()
+    
+    gain = change.apply(lambda x: x if x>=0 else 0.0)
+    loss = change.apply(lambda x: -x if x<0 else 0.0)
+    
+    avgGain = gain.ewm(span=periods, min_periods=periods).mean()
+    avgLoss = loss.ewm(span=periods, min_periods=periods).mean()
+    
+    rs = avgGain / avgLoss
+    rsi = 100 - (100/(rs + 1))
+    
+    return rsi
