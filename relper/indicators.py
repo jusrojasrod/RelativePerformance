@@ -97,3 +97,4 @@ def _rsi(data, periods=14):
     rsi = 100 - (100/(rs + 1))
 
     return rsi
+
