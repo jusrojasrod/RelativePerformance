@@ -95,5 +95,6 @@ def _rsi(data, periods=14):
     
     rs = avgGain / avgLoss
     rsi = 100 - (100/(rs + 1))
+    rsi.dropna(inplace=True)
     
     return rsi
